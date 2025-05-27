@@ -17,12 +17,7 @@ public class ProfilePageClientController extends dashBoardClientController {
     private String ruolo = session.getRuolo();
 
     public void handleLogOut(ActionEvent event) {
-        SessionManager.getInstance().logout();//cancello i dati dalla sessione
-        try {
-            super.goTo(event, "loginPage.fxml");
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        super.handleLogOut(event);
     }
     @Override
     public void closeProgram(ActionEvent event) {
@@ -31,15 +26,24 @@ public class ProfilePageClientController extends dashBoardClientController {
 
     @FXML
     public void initialize() {
-        welcomeLabel.setText("PROFILO DI " + user + "");
+        welcomeLabel.setText("PROFILO CLIENTE DI " + user + "");
         System.out.println("Utente: "+user+ "Id: "+id+"Ruolo: "+ruolo);
     }
 
     @FXML
-    private void onProfileClick(ActionEvent event) throws IOException {
-        goTo(event,".fxml");
-    }@FXML
-    private void goBack(ActionEvent event) throws IOException {
-        goTo(event, "Ristoratore/dashBoardClient.fxml");
+    protected void onProfileClick(ActionEvent event) throws IOException {
+        super.onProfileClick(event);
+    }
+    @FXML
+    protected void goBack(ActionEvent event) throws IOException {
+        super.goBack(event);
+    }
+    @FXML
+    protected void onRecensioniClick(ActionEvent event) throws IOException {
+        super.onRecensioniClick(event);
+    }
+    @FXML
+    protected void onRistorantiClick(ActionEvent event) throws IOException {
+        super.onRistorantiClick(event);
     }
 }

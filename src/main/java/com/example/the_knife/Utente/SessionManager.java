@@ -6,7 +6,7 @@ public class SessionManager {
     private String username;
     private int userId;
     private String ruolo;
-
+    public static Integer idRist =null;
     //COSTRUTTORE
     private SessionManager() {
 

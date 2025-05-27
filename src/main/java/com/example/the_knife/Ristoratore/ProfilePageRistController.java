@@ -17,13 +17,9 @@ public class ProfilePageRistController extends dashBoardRistController {
     private String ruolo = session.getRuolo();
 
     public void handleLogOut(ActionEvent event) {
-        SessionManager.getInstance().logout();//cancello i dati dalla sessione
-        try {
-            super.goTo(event, "loginPage.fxml");
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        super.handleLogOut(event);
     }
+
     @Override
     public void closeProgram(ActionEvent event) {
         super.closeProgram(event);
@@ -35,12 +31,19 @@ public class ProfilePageRistController extends dashBoardRistController {
         System.out.println("Utente: "+user+ "Id: "+id+"Ruolo: "+ruolo);
     }
 
+
     @FXML
-    private void onProfileClick(ActionEvent event) throws IOException {
-        goTo(event,"dashBoardProfRist.fxml");
+    public void onAddRistClick(ActionEvent event) throws IOException {
+        super.onAddRistClick(event);
     }
+
     @FXML
-    private void goBack(ActionEvent event) throws IOException {
-        goTo(event, "dashBoardRist.fxml");
+    protected void onRistorantiClick(ActionEvent event) throws IOException {
+        super.onRistorantiClick(event);
+    }
+
+    @FXML
+    protected void goBack(ActionEvent event) throws IOException {
+        super.goBack(event);
     }
 }

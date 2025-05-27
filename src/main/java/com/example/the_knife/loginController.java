@@ -1,5 +1,7 @@
 package com.example.the_knife;
 
+import com.example.the_knife.Exceptions.TelefonoNonValidoException;
+import com.example.the_knife.Exceptions.UtenteException;
 import com.example.the_knife.Utente.ListaUtenti;
 import com.example.the_knife.Utente.SessionManager;
 import com.example.the_knife.Utente.Utente;
@@ -61,10 +63,10 @@ public class loginController extends StartPageController {
         //CREO LA SESSIONE
 
         if(utente != null && utente.Ruolo.equals("Cliente")){
-            SessionManager.getInstance().login(user, 1, "cliente");
+            SessionManager.getInstance().login(user, utente.Id, "cliente");
             goTo(event,"Cliente/dashBoardClient.fxml");//vado alla pagina del cliente
-        }else{
-            SessionManager.getInstance().login(user, 1, "ristoratore");
+        }else if(utente != null && utente.Ruolo.equals("Ristoratore")){
+            SessionManager.getInstance().login(user, utente.Id, "ristoratore");
             goTo(event,"Ristoratore/dashBoardRist.fxml");//vado alla pagina del ristoratore
         }
 
@@ -78,7 +80,7 @@ public class loginController extends StartPageController {
 
         //METODI CHE CHIAMO
         handleRadio();
-        handleInput();
+
 
         //DEFINIZIONE handleRegister
         String newUser = userRegister.getText();
@@ -91,11 +93,30 @@ public class loginController extends StartPageController {
         cognome = cognome.trim();
         String numerotel = numTel.getText();
         numerotel = numerotel.trim();
+        numerotel = numerotel.replaceAll("[\\s-]","");
         String indirizzo = this.indirizzo.getText();
         indirizzo = indirizzo.trim();
         LocalDate DataNascita = dataNascita.getValue();
         RadioButton ruolo = (RadioButton) this.ruoloToggleGroup.getSelectedToggle();
         String role = ruolo.getText();
+
+        // Controlla che l indirizzo contenga almeno una lettera e un numero
+        if (!indirizzo.matches(".*\\d.*") || !indirizzo.matches(".*[a-zA-Z].*")) {
+            handleInput("Errore", "L'indirizzo deve contenere almeno una lettera e un numero.");
+            throw new IllegalArgumentException("L'indirizzo deve contenere almeno una lettera e un numero.");
+        }
+        // Controlla che l indirizzo non contenga caratteri non validi
+        if (!indirizzo.matches("^[\\p{L}0-9.,'\\-\\s]+$")) {
+            handleInput("Errore", "L'indirizzo contiene caratteri non validi.");
+            throw new IllegalArgumentException("L'indirizzo contiene caratteri non validi.");
+        }
+        // Verifico che il numero inizi con + seguito da 1-4 cifre (prefisso internazionale),
+        // Poi abbia da 6 a 12 cifre, che possono essere separate da spazi o trattini.
+        // Non accetta caratteri diversi da spazi o trattini.
+        if (!numerotel.matches("^\\+\\d{1,4}\\d{6,12}$")) {
+            handleInput("Errore", "Numero di telefono non valido. Deve iniziare con + seguito da prefisso e numero, e deve avere minimo 6 e massimo 12 cifre.");
+            throw new TelefonoNonValidoException("Numero di telefono non valido. Deve iniziare con + seguito da prefisso e numero, e deve avere minimo 6 e massimo 12 cifre.");
+        }
 
         try {
             Utente nuovo = new Utente(name,cognome,indirizzo,newUser,newPass,DataNascita,numerotel,role,generaId(role,"fileUtenti.json"));
@@ -110,18 +131,10 @@ public class loginController extends StartPageController {
         System.out.println("Riepilogo:");
         System.out.println("Username: "+newUser +"\nPassword: "+newPass+"\nNome: "+name+"\nCognome:" +cognome+"\nNumero di telefono: "+numerotel+"\nData di nascita: "+DataNascita+"\nIndirizzo: "+indirizzo);
 
-
+        handleInput();
     }
 
-    private void handleInput() {
-        //if(controllo che tutti gli input siano andati bene allora mando questo messaggio)
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registrazione");
-        alert.setHeaderText("Ti sei registrato correttamente");
-        alert.setContentText("I tuoi dati sono stati salvati...");
-        alert.showAndWait();
-        //else mando un errore specifico su un tipo di input inserito dall'utente
-    }
+
     public static int generaId(String ruolo, String fileJson) {
 
         if(ruolo.equalsIgnoreCase("Cliente")){
@@ -194,6 +207,14 @@ public class loginController extends StartPageController {
                 return;
             }
 
+            ListaUtenti lista = mapper.readValue(new File(fileJson), ListaUtenti.class);
+
+            for(Utente u : lista.Utenti){
+                if(u.Username.equalsIgnoreCase(nuovo.Username)){
+                    throw new UtenteException("Utente già registrato");
+                }
+            }
+
             JsonNode root = mapper.readTree(file);// Legge l'intero contenuto del file come un albero JSON
 
             List<Utente> listaModificabile = new ArrayList<>();// Prepara una lista modificabile di Utente (vuota per ora)
@@ -222,7 +243,7 @@ public class loginController extends StartPageController {
     }
 
     // Metodo per login sicuro con BCrypt
-    public static Utente login(String username, String passwordInserita) throws Exception {
+    public  Utente login(String username, String passwordInserita) throws Exception {
         ObjectMapper mapper = new ObjectMapper(); // Crea un oggetto ObjectMapper di Jackson per la deserializzazione JSON
         mapper.registerModule(new JavaTimeModule()); // Registra un modulo per la gestione corretta di LocalDate e altri tipi Java Time
         ListaUtenti lista = mapper.readValue(new File("fileUtenti.json"), ListaUtenti.class); // Deserializza il file JSON in un oggetto ListaUtenti
@@ -236,12 +257,33 @@ public class loginController extends StartPageController {
                     System.out.println("Login riuscito per utente: " + u.Username);
                     return u; // Restituisce l'utente loggato
                 } else {
-                    System.out.println("Password errata per utente: " + u.Username);
+                    handleInput("Errore", "Password errata per utente: " + u.Username);
+                    System.err.println("Password errata per utente: " + u.Username);
                     return null;
                 }
             }
         }
-        System.out.println("Username non trovato");
+        handleInput("Errore", "Username non trovato");
+        System.err.println("Username non trovato");
         return null;
+    }
+
+    protected void handleInput() {
+        //if(controllo che tutti gli input siano andati bene allora mando questo messaggio)
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Registrazione");
+        alert.setHeaderText("Ti sei registrato correttamente");
+        alert.setContentText("I tuoi dati sono stati salvati...");
+        alert.showAndWait();
+        //else mando un errore specifico su un tipo di input inserito dall'utente
+    }
+    protected void handleInput(String message1,String message2) {
+        //if(controllo che tutti gli input siano andati bene allora mando questo messaggio)
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Registrazione");
+        alert.setHeaderText(message1);
+        alert.setContentText(message2);
+        alert.showAndWait();
+        //else mando un errore specifico su un tipo di input inserito dall'utente
     }
 }

@@ -23,13 +23,24 @@ public class StartPageController {
         stage.show();
     }
     @FXML
-    public void goTo(ActionEvent event, String location) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(location));
-        Scene loginScene = new Scene(loader.load(),900,800);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(loginScene);
-        stage.setTitle("The_Knife");
-        stage.show();
+    public void goTo(ActionEvent event, String location) throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(location));
+            Scene loginScene = new Scene(loader.load(), 900, 800);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(loginScene);
+            stage.setTitle("The_Knife");
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Errore nel caricamento del file FXML:");
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            System.err.println("Il path al file FXML è nullo o errato:");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("Errore imprevisto:");
+            e.printStackTrace();
+        }
     }
     @FXML
     public void closeProgram(ActionEvent event) {

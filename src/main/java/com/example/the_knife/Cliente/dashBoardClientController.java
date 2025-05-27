@@ -10,8 +10,6 @@ import java.io.IOException;
 
 public class dashBoardClientController extends loginController {
 
-
-
     @FXML
     private Label welcomeLabel;
 
@@ -20,11 +18,15 @@ public class dashBoardClientController extends loginController {
     private int id = session.getUserId();
     private String ruolo = session.getRuolo();
 
-    public void handleLogOut(ActionEvent event) throws IOException {
+    public void handleLogOut(ActionEvent event) {
         SessionManager.getInstance().logout();//cancello i dati dalla sessione
-        System.out.println("Logout effettuato");
-            super.goTo(event, "loginPage.fxml");
+        try {
+            super.goTo(event, "/com/example/the_knife/loginPage.fxml");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
+
     @Override
     public void closeProgram(ActionEvent event) {
         super.closeProgram(event);
@@ -36,10 +38,20 @@ public class dashBoardClientController extends loginController {
         System.out.println("Utente: "+user+ "Id: "+id+"Ruolo: "+ruolo);
     }
 
-
     @FXML
-    private void goToProfile(ActionEvent event) throws IOException {
-        System.out.println("Stai andando al profilo");
-        goTo(event, "profilePageClient.fxml");
+    protected void onProfileClick(ActionEvent event) throws IOException {
+        goTo(event,"profilePageClient.fxml");
+    }
+    @FXML
+    protected void onRecensioniClick(ActionEvent event) throws IOException {
+        goTo(event,"recensioniClient.fxml");
+    }
+    @FXML
+    protected void onRistorantiClick(ActionEvent event) throws IOException {
+        goTo(event,"ristorantiClient.fxml");
+    }
+    @FXML
+    protected void goBack(ActionEvent event) throws IOException {
+        super.goTo(event, "dashBoardClient.fxml");
     }
 }
