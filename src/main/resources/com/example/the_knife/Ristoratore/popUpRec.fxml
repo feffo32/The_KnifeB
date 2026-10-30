@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.Ristoratore.PopUpRecController">
+    <VBox styleClass="form-boxPop" spacing="20" alignment="CENTER" prefWidth="400" prefHeight="250">
+        <stylesheets>
+            <URL value="@../style.css"/>
+        </stylesheets>
+
+        <!-- RIGA: Label + TextField -->
+        <HBox spacing="20" alignment="CENTER_LEFT" >
+            <Label fx:id="label1" styleClass="textPopUp"/>
+            <TextField fx:id="txt1" styleClass="rounded-textfield2"/>
+        </HBox>
+
+        <!-- RIGA: Bottoni -->
+        <HBox spacing="40" alignment="CENTER">
+            <Button fx:id="noButton" styleClass="accent-button" onAction="#handleCloseAnnulla">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <image>
+                            <Image url="@/com/example/the_knife/icone/annulla.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="okButton" styleClass="accent-button">
+                <graphic>
+                    <ImageView fitWidth="24" fitHeight="24">
+                        <image>
+                            <Image url="@/com/example/the_knife/icone/conferma.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </VBox>
+</VBox>

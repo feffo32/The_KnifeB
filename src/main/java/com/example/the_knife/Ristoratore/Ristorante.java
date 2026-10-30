@@ -1,233 +1,262 @@
 package com.example.the_knife.Ristoratore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * La classe {@code Ristorante} rappresenta un'entità ristorante con tutte le sue proprietà
+ * anagrafiche e funzionali, inclusi contatti, posizione, tipo di cucina, servizi disponibili,
+ * recensioni e metadati statistici.
+ *
+ * È utilizzata per la gestione dei dati nei controller e viene serializzata/deserializzata
+ * da/verso file JSON tramite Jackson.
+ */
 public class Ristorante {
-    public int Id;
-    public int IdRistoratore;
-    public String Name;
-    public String Address;
-    public String Location;
-    public String Price;
-    public String Email;
-    public String Cuisine;
-    public double Longitude;
-    public double Latitude;
-    public String PhoneNumber;
-    public String Url;
-    public String WebsiteUrl;
-    public String Award;
-    public int GreenStar;
-    public String FacilitiesAndServices;
-    public String Description;
-    public boolean Delivery;
-    public boolean BookingOnline;
+    /** Identificativo univoco del ristorante. */
+    @JsonProperty("Id")
+    public int id;
+
+    /** Identificativo del ristoratore proprietario. */
+    @JsonProperty("IdRistoratore")
+    public int idRistoratore;
+
+    /** Nome del ristorante. */
+    @JsonProperty("Name")
+    public String name;
+
+    /** Indirizzo completo del ristorante. */
+    @JsonProperty("Address")
+    public String address;
+
+    /** Città o località del ristorante. */
+    @JsonProperty("Location")
+    public String location;
+
+    /** Fascia di prezzo rappresentata da simboli (es. €, $$). */
+    @JsonProperty("Price")
+    public String price;
+
+    /** Tipo di cucina offerta (es. Italiana, Giapponese). */
+    @JsonProperty("Cuisine")
+    public String cuisine;
+
+    /** Coordinata longitudine per geolocalizzazione. */
+    @JsonProperty("Longitude")
+    public double longitude;
+
+    /** Coordinata latitudine per geolocalizzazione. */
+    @JsonProperty("Latitude")
+    public double latitude;
+
+    /** Numero di telefono del ristorante. */
+    @JsonProperty("PhoneNumber")
+    public String phoneNumber;
+
+    /** URL del sito web del ristorante. */
+    @JsonProperty("WebsiteUrl")
+    public String websiteUrl;
+
+    /** Numero di stelle verdi (qualità o sostenibilità). */
+    @JsonProperty("GreenStar")
+    public int greenStar;
+
+    /** Elenco dei servizi e delle strutture disponibili. */
+    @JsonProperty("FacilitiesAndServices")
+    public String facilitiesAndServices;
+
+    /** Descrizione testuale del ristorante. */
+    @JsonProperty("Description")
+    public String description;
+
+    /** Indica se il ristorante offre consegna a domicilio. */
+    @JsonProperty("Delivery")
+    public boolean delivery;
+
+    /** Indica se il ristorante permette prenotazioni online. */
+    @JsonProperty("BookingOnline")
+    public boolean bookingOnline;
+
+    /** Lista delle recensioni associate al ristorante. */
+    @JsonProperty("recensioni")
     public List<Recensione> recensioni;
-    public int NumRec;
-    public double MediaRec;
 
+    /** Numero totale di recensioni. */
+    @JsonProperty("NumRec")
+    public int numRec;
 
-    public Ristorante(int id, int idRistoratore, String nome, String address, String location, String price, String cousine, double lati, double longi, String tel, String url, int stars, String service, String description, boolean delivery, boolean booking, String email ) {
-        Id = id;
-        IdRistoratore = idRistoratore;
-        Name = nome ;
-        Address = address;
-        Location = location;
-        Price = price;
-        Cuisine = cousine;
-        Longitude = longi;
-        Latitude = lati;
-        PhoneNumber = tel;
-        WebsiteUrl = url;
-        GreenStar = stars;
-        FacilitiesAndServices = service;
-        Description = description;
-        Delivery = delivery;
-        BookingOnline = booking;
-        Email = email;
+    /** Media delle valutazioni delle recensioni. */
+    @JsonProperty("MediaRec")
+    public double mediaRec;
+
+    /** Email di contatto del ristorante. */
+    @JsonProperty("Email")
+    public String email;
+
+    /**
+     * Costruttore completo per inizializzare un oggetto Ristorante con tutti i campi principali.
+     *
+     * @param Id identificativo del ristorante
+     * @param IdRistoratore identificativo del proprietario
+     * @param Nome nome del ristorante
+     * @param Address indirizzo fisico
+     * @param Location località/città
+     * @param Price fascia di prezzo
+     * @param Cousine tipo di cucina
+     * @param lati latitudine
+     * @param longi longitudine
+     * @param tel numero di telefono
+     * @param url URL del sito
+     * @param stars numero di stelle verdi
+     * @param service servizi offerti
+     * @param Description descrizione del ristorante
+     * @param Delivery flag per consegna a domicilio
+     * @param Booking flag per prenotazione online
+     * @param Email email del ristorante
+     */
+    public Ristorante(int Id, int IdRistoratore, String Nome, String Address, String Location, String Price,
+                      String Cousine, double lati, double longi, String tel, String url, int stars, String service,
+                      String Description, boolean Delivery, boolean Booking, String Email ) {
+        id = Id;
+        idRistoratore = IdRistoratore;
+        name = Nome ;
+        address = Address;
+        location = Location;
+        price = Price;
+        cuisine = Cousine;
+        longitude = longi;
+        latitude = lati;
+        phoneNumber = tel;
+        websiteUrl = url;
+        greenStar = stars;
+        facilitiesAndServices = service;
+        description = Description;
+        delivery = Delivery;
+        bookingOnline = Booking;
+        email = Email;
         recensioni = null;
-        NumRec = 0;
-        MediaRec = 0;
+        numRec = 0;
+        mediaRec = 0;
     }
+    /** Costruttore vuoto per la deserializzazione automatica. */
+    public Ristorante(){}
 
-    public Ristorante(){
+    /** @return ID del ristorante */
+    public int getId() { return id; }
 
-    }
+    /** @param id nuovo ID del ristorante */
+    public void setId(int id) { this.id = id; }
 
-    //getter e setter
-    public int getId() {
-        return Id;
-    }
+    /** @return ID del ristoratore proprietario */
+    public int getIdRistoratore() { return idRistoratore; }
 
-    public void setId(int id) {
-        Id = id;
-    }
+    /** @param idRistoratore nuovo ID del ristoratore */
+    public void setIdRistoratore(int idRistoratore) { this.idRistoratore = idRistoratore; }
 
-    public int getIdRistoratore() {
-        return IdRistoratore;
-    }
+    /** @return nome del ristorante */
+    public String getName() { return name; }
 
-    public void setIdRistoratore(int idRistoratore) {
-        IdRistoratore = idRistoratore;
-    }
+    /** @param name nuovo nome del ristorante */
+    public void setName(String name) { this.name = name; }
 
-    public String getName() {
-        return Name;
-    }
+    /** @return indirizzo fisico */
+    public String getAddress() { return address; }
 
-    public void setName(String name) {
-        Name = name;
-    }
+    /** @param address nuovo indirizzo fisico */
+    public void setAddress(String address) { this.address = address; }
 
-    public String getAddress() {
-        return Address;
-    }
+    /** @return città o località */
+    public String getLocation() { return location; }
 
-    public void setAddress(String address) {
-        Address = address;
-    }
+    /** @param location nuova città o località */
+    public void setLocation(String location) { this.location = location; }
 
-    public String getLocation() {
-        return Location;
-    }
+    /** @return fascia di prezzo */
+    public String getPrice() { return price; }
 
-    public void setLocation(String location) {
-        Location = location;
-    }
+    /** @param price nuova fascia di prezzo */
+    public void setPrice(String price) { this.price = price; }
 
-    public String getPrice() {
-        return Price;
-    }
+    /** @return tipo di cucina */
+    public String getCuisine() { return cuisine; }
 
-    public void setPrice(String price) {
-        Price = price;
-    }
-    public String getEmail() {
-        return Email;
-    }
-    public void setEmail(String email) {
-        Email = email;
-    }
+    /** @param cuisine nuovo tipo di cucina */
+    public void setCuisine(String cuisine) { this.cuisine = cuisine; }
 
-    public String getCuisine() {
-        return Cuisine;
-    }
+    /** @return longitudine geografica */
+    public double getLongitude() { return longitude; }
 
-    public void setCuisine(String cuisine) {
-        Cuisine = cuisine;
-    }
+    /** @param longitude nuova longitudine */
+    public void setLongitude(double longitude) { this.longitude = longitude; }
 
-    public double getLongitude() {
-        return Longitude;
-    }
+    /** @return latitudine geografica */
+    public double getLatitude() { return latitude; }
 
-    public void setLongitude(double longitude) {
-        Longitude = longitude;
-    }
+    /** @param latitude nuova latitudine */
+    public void setLatitude(double latitude) { this.latitude = latitude; }
 
-    public double getLatitude() {
-        return Latitude;
-    }
+    /** @return numero di telefono */
+    public String getPhoneNumber() { return phoneNumber; }
 
-    public void setLatitude(double latitude) {
-        Latitude = latitude;
-    }
+    /** @param phoneNumber nuovo numero di telefono */
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public String getPhoneNumber() {
-        return PhoneNumber;
-    }
+    /** @return URL del sito web */
+    public String getWebsiteUrl() { return websiteUrl; }
 
-    public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
-    }
+    /** @param websiteUrl nuovo URL del sito web */
+    public void setWebsiteUrl(String websiteUrl) { this.websiteUrl = websiteUrl; }
 
-    public String getUrl() {
-        return Url;
-    }
+    /** @return numero di stelle verdi */
+    public int getGreenStar() { return greenStar; }
 
-    public void setUrl(String url) {
-        Url = url;
-    }
+    /** @param greenStar nuovo numero di stelle verdi */
+    public void setGreenStar(int greenStar) { this.greenStar = greenStar; }
 
-    public String getWebsiteUrl() {
-        return WebsiteUrl;
-    }
+    /** @return servizi e strutture disponibili */
+    public String getFacilitiesAndServices() { return facilitiesAndServices; }
 
-    public void setWebsiteUrl(String websiteUrl) {
-        WebsiteUrl = websiteUrl;
-    }
+    /** @param facilitiesAndServices nuova lista di servizi */
+    public void setFacilitiesAndServices(String facilitiesAndServices) { this.facilitiesAndServices = facilitiesAndServices; }
 
-    public String getAward() {
-        return Award;
-    }
+    /** @return descrizione del ristorante */
+    public String getDescription() { return description; }
 
-    public void setAward(String award) {
-        Award = award;
-    }
+    /** @param description nuova descrizione */
+    public void setDescription(String description) { this.description = description; }
 
-    public int getGreenStar() {
-        return GreenStar;
-    }
+    /** @return true se è disponibile la consegna a domicilio */
+    public boolean isDelivery() { return delivery; }
 
-    public void setGreenStar(int greenStar) {
-        GreenStar = greenStar;
-    }
+    /** @param delivery imposta la disponibilità della consegna */
+    public void setDelivery(boolean delivery) { this.delivery = delivery; }
 
-    public String getFacilitiesAndServices() {
-        return FacilitiesAndServices;
-    }
+    /** @return true se è disponibile la prenotazione online */
+    public boolean isBookingOnline() { return bookingOnline; }
 
-    public void setFacilitiesAndServices(String facilitiesAndServices) {
-        FacilitiesAndServices = facilitiesAndServices;
-    }
+    /** @param bookingOnline imposta la disponibilità della prenotazione online */
+    public void setBookingOnline(boolean bookingOnline) { this.bookingOnline = bookingOnline; }
 
-    public String getDescription() {
-        return Description;
-    }
+    /** @return lista di recensioni */
+    public List<Recensione> getRecensioni() { return recensioni; }
 
-    public void setDescription(String description) {
-        Description = description;
-    }
+    /** @param recensioni nuova lista di recensioni */
+    public void setRecensioni(List<Recensione> recensioni) { this.recensioni = recensioni; }
 
-    public boolean isDelivery() {
-        return Delivery;
-    }
+    /** @return numero di recensioni */
+    public int getNumRec() { return numRec; }
 
-    public void setDelivery(boolean delivery) {
-        Delivery = delivery;
-    }
+    /** @param numRec nuovo numero di recensioni */
+    public void setNumRec(int numRec) { this.numRec = numRec; }
 
-    public boolean isBookingOnline() {
-        return BookingOnline;
-    }
+    /** @return media delle valutazioni */
+    public double getMediaRec() { return mediaRec; }
 
-    public void setBookingOnline(boolean bookingOnline) {
-        BookingOnline = bookingOnline;
-    }
+    /** @param mediaRec nuova media delle valutazioni */
+    public void setMediaRec(double mediaRec) { this.mediaRec = mediaRec; }
 
-    public List<Recensione> getRecensioni() {
-        return recensioni;
-    }
+    /** @return email del ristorante */
+    public String getEmail() { return email; }
 
-    public void setRecensioni(List<Recensione> recensioni) {
-        this.recensioni = recensioni;
-    }
-
-    public int getNumRec() {
-        return NumRec;
-    }
-
-    public void setNumRec(int numRec) {
-        NumRec = numRec;
-    }
-
-    public double getMediaRec() {
-        return MediaRec;
-    }
-
-    public void setMediaRec(double mediaRec) {
-        MediaRec = mediaRec;
-    }
+    /** @param email nuova email del ristorante */
+    public void setEmail(String email) { this.email = email; }
 
 }
