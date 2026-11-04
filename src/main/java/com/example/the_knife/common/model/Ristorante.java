@@ -24,6 +24,7 @@ public class Ristorante implements Serializable {
     private String tipoCucina;
     private boolean delivery;
     private boolean prenotazioneOnline;
+    private double mediaRecensioni;
 
     public Ristorante() {}
 
@@ -31,7 +32,7 @@ public class Ristorante implements Serializable {
                       String nCivico, int cap, double latitudine, double longitudine, String email,
                       String telefono, String websiteUrl, String descrizione, String servizi,
                       Integer numeroStelle, String fasciaPrezzi, String tipoCucina, boolean delivery,
-                      boolean prenotazioneOnline) {
+                      boolean prenotazioneOnline, double mediaRecensioni) {
         this.idRistorante = idRistorante;
         this.idRistoratore = idRistoratore;
         this.nome = nome;
@@ -51,6 +52,7 @@ public class Ristorante implements Serializable {
         this.tipoCucina = tipoCucina;
         this.delivery = delivery;
         this.prenotazioneOnline = prenotazioneOnline;
+        this.mediaRecensioni = mediaRecensioni;
     }
 
     public int getIdRistorante() {
@@ -203,5 +205,12 @@ public class Ristorante implements Serializable {
 
     public void setPrenotazioneOnline(boolean prenotazioneOnline) {
         this.prenotazioneOnline = prenotazioneOnline;
+    }
+    public double getMediaRecensioni() {
+        return mediaRecensioni;
+    }
+
+    public void setMediaRecensioni(double mediaRecensioni) {
+        this.mediaRecensioni = mediaRecensioni;
     }
 }
