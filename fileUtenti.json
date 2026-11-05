@@ -43703,5 +43703,17 @@
     "Ruolo" : "Cliente",
     "Id" : 0,
     "Preferiti" : null
+  }, {
+    "Nome" : "Federico",
+    "Cognome" : "Lux",
+    "Email" : "dfsdfsfsdf@gmail.com",
+    "Indirizzo" : "sdffasfaasf 12",
+    "Username" : "fede32",
+    "Password" : "$2a$10$SUfkeZWH35ENjEC1ErqpnOvelh7Emg2X6QhWIDS204rGMaNalbkDG",
+    "DataDiNascita" : [ 2026, 11, 14 ],
+    "Telefono" : "+39123456789",
+    "Ruolo" : "Ristoratore",
+    "Id" : 211,
+    "Preferiti" : null
   } ]
 }

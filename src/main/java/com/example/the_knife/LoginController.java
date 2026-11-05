@@ -324,7 +324,7 @@ public class LoginController extends StartPageController {
      * @param fileJson il file JSON da aggiornare
      */
     // Metodo per aggiungere un nuovo utente al file degli Utenti
-    public  void aggiungiUtente(Utente nuovo, String fileJson) {
+    public void aggiungiUtente(Utente nuovo, String fileJson) {
         try {
 
             ObjectMapper mapper = new ObjectMapper();// Crea un'istanza di ObjectMapper

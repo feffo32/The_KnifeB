@@ -18,12 +18,12 @@ public class Utente implements Serializable {
     private String stato;
     private String indirizzo;
     private String nCivico;
-    private int cap;
+    private String cap;
     private String ruolo; // Cliente o Ristoratore
 
     public Utente (){}
 
-    public Utente(String ruolo, int cap, String nCivico, String indirizzo, String stato, String citta, LocalDate dataNascita, String telefono,
+    public Utente(String ruolo, String cap, String nCivico, String indirizzo, String stato, String citta, LocalDate dataNascita, String telefono,
                   String username, String password, String email, String cognome, String nome, int idUtente) {
         this.ruolo = ruolo;
         this.cap = cap;
@@ -89,7 +89,7 @@ public class Utente implements Serializable {
         return nCivico;
     }
 
-    public int getCap() {
+    public String getCap() {
         return cap;
     }
 
@@ -145,7 +145,7 @@ public class Utente implements Serializable {
         this.nCivico = nCivico;
     }
 
-    public void setCap(int cap) {
+    public void setCap(String cap) {
         this.cap = cap;
     }
 

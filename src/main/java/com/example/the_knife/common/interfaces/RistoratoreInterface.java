@@ -10,7 +10,7 @@ import java.util.List;
 public interface RistoratoreInterface extends UtenteInterface{
     public boolean aggiungiRistorante ( Ristorante ristorante ) throws RemoteException;
     public boolean removeRistorante ( Ristorante ristorante ) throws RemoteException;
-    public List<Ristorante> getRistoranteById (String idRistoratore ) throws RemoteException;
+    public List<Ristorante> getRistoranteByIdRistoratore (String idRistoratore ) throws RemoteException;
     public void rispondiRecensione (Recensione recensione) throws RemoteException;
     public void removeRispostaRec (Recensione recensione) throws RemoteException;
     public void modificaRispostaRec (Recensione recensione) throws RemoteException;
