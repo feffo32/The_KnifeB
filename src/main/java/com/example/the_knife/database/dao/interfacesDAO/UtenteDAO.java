@@ -9,7 +9,7 @@ public interface UtenteDAO {
     public Utente login (String username, String password) ;
     public boolean register (Utente utente) ;
     public boolean deleteUtente (Utente utente) ;
-    public void modificaUte (Utente utente) ;
+    public boolean modificaUte (Utente utente) ;
     public boolean verificaPassword (String username, String password) ;
     public Utente riepilogoUtente (int idUtente) ;
 

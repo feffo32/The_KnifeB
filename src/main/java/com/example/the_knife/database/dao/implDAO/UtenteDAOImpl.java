@@ -65,7 +65,11 @@ public class UtenteDAOImpl implements UtenteDAO {
                 return rowsAffected > 0;
             } catch (SQLException e){
                 // In caso di errore (es. Username/Email duplicati), annulliamo la transazione
-                conn.rollback();
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 System.err.println("Errore/Conflitto durante la registrazione: " + e.getMessage());
                 return false;
             }
@@ -79,21 +83,80 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     @Override
     public boolean deleteUtente(Utente utente) {
-        return false;
+
+        String sqlDelete = "DELETE FROM Utente WHERE idutente = ?";
+
+        try(
+                Connection conn = DBConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sqlDelete);) {
+            stmt.setInt(1, utente.getIdUtente());
+            int rowsAffected = stmt.executeUpdate();
+
+            // stmt.executeUpdate() ritorna un numero > 0 se la query ha avuto successo
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void modificaUte(Utente utente) {
+    public boolean modificaUte(Utente utente) {
 
+        String sqlUpdateUte = "UPDATE Utente SET nome = ?, cognome=?, email=?, username=?, password=?, datanascita=?, telefono=?," +
+                " citta=?, stato=?, indirizzo=?, ncivico=?, cap=?, ruolo=? " +
+                "WHERE idutente = ?  ";
+
+        try(
+                Connection conn = DBConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sqlUpdateUte);
+                )
+        {
+            stmt.setString(1, utente.getNome());
+            stmt.setString(2, utente.getCognome());
+            stmt.setString(3, utente.getEmail());
+            stmt.setString(4, utente.getUsername());
+            stmt.setString(5, utente.getPassword());
+            stmt.setDate(6, Date.valueOf(utente.getDataNascita()));
+            stmt.setString(7, utente.getTelefono());
+            stmt.setString(8, utente.getCitta());
+            stmt.setString(9, utente.getStato());
+            stmt.setString(10, utente.getIndirizzo());
+            stmt.setString(11, utente.getnCivico());
+            stmt.setString(12, utente.getCap());
+            stmt.setString(13, utente.getRuolo());
+            stmt.setInt(14, utente.getIdUtente());
+
+            int rowsAffected = stmt.executeUpdate();
+
+            return rowsAffected > 0;
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public boolean verificaPassword(String username, String password) {
-        return false;
+        return login(username, password) != null;
     }
 
     @Override
     public Utente riepilogoUtente(int idUtente) {
+        String sqlRiepilogoUte = "SELECT * FROM Utente WHERE idutente = ?";
+
+        try(
+                Connection conn = DBConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sqlRiepilogoUte);
+        ){
+            stmt.setInt(1,idUtente);
+
+            try(ResultSet rs = stmt.executeQuery()){
+                if(rs.next()) {
+                    return mapResultSetToUtente(rs);
+                }
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
