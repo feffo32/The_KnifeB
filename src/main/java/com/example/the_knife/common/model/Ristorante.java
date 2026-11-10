@@ -11,7 +11,7 @@ public class Ristorante implements Serializable {
     private String citta;
     private String indirizzo;
     private String nCivico;
-    private int cap;
+    private String cap;
     private double latitudine;
     private double longitudine;
     private String email;
@@ -24,15 +24,15 @@ public class Ristorante implements Serializable {
     private String tipoCucina;
     private boolean delivery;
     private boolean prenotazioneOnline;
-    private double mediaRecensioni;
+    private String stato;
 
     public Ristorante() {}
 
     public Ristorante(int idRistorante, int idRistoratore, String nome, String citta, String indirizzo,
-                      String nCivico, int cap, double latitudine, double longitudine, String email,
+                      String nCivico, String cap, double latitudine, double longitudine, String email,
                       String telefono, String websiteUrl, String descrizione, String servizi,
                       Integer numeroStelle, String fasciaPrezzi, String tipoCucina, boolean delivery,
-                      boolean prenotazioneOnline, double mediaRecensioni) {
+                      boolean prenotazioneOnline, String stato) {
         this.idRistorante = idRistorante;
         this.idRistoratore = idRistoratore;
         this.nome = nome;
@@ -52,7 +52,7 @@ public class Ristorante implements Serializable {
         this.tipoCucina = tipoCucina;
         this.delivery = delivery;
         this.prenotazioneOnline = prenotazioneOnline;
-        this.mediaRecensioni = mediaRecensioni;
+        this.stato = stato;
     }
 
     public int getIdRistorante() {
@@ -103,11 +103,11 @@ public class Ristorante implements Serializable {
         this.nCivico = nCivico;
     }
 
-    public int getCap() {
+    public String getCap() {
         return cap;
     }
 
-    public void setCap(int cap) {
+    public void setCap(String cap) {
         this.cap = cap;
     }
 
@@ -206,11 +206,12 @@ public class Ristorante implements Serializable {
     public void setPrenotazioneOnline(boolean prenotazioneOnline) {
         this.prenotazioneOnline = prenotazioneOnline;
     }
-    public double getMediaRecensioni() {
-        return mediaRecensioni;
+
+    public String getStato() {
+        return stato;
     }
 
-    public void setMediaRecensioni(double mediaRecensioni) {
-        this.mediaRecensioni = mediaRecensioni;
+    public void setStato(String stato) {
+        this.stato = stato;
     }
 }
