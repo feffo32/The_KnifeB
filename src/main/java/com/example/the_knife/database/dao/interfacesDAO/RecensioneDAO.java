@@ -8,10 +8,10 @@ import java.util.List;
 public interface RecensioneDAO {
 
     public List<Recensione> visualizzaRecensioneByRistorante (Ristorante ristorante);
-    public void rispondiRecensione (Recensione recensione) ;
-    public void removeRispostaRec (Recensione recensione) ;
-    public void modificaRispostaRec (Recensione recensione) ;
-    public void aggiungiRecensione (Recensione newRecensione, Ristorante ristorante) ;
-    public void removeRecensione (Recensione recensione,  Ristorante ristorante) ;
-    public void modificaRecensione (String testoRecensione, int valutazione);
+    public boolean rispondiRecensione (Recensione recensione) ;
+    public boolean removeRispostaRec (Recensione recensione) ;
+    public boolean modificaRispostaRec (Recensione recensione) ;
+    public boolean aggiungiRecensione (Recensione newRecensione) ;
+    public boolean removeRecensione (Recensione recensione) ;
+    public boolean modificaRecensione (Recensione recensione, String testoRecensione, Integer valutazione);
 }

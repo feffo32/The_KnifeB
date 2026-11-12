@@ -15,11 +15,13 @@ public class Prenotazione implements Serializable {
     private String nominativo;
     private String telefono;
     private String infoAggiuntive;
+    private String fasciaOraria;
+    private int numeroPersone;
 
     public Prenotazione() {}
 
     public Prenotazione(int idPrenotazione, int idCliente, int idRistorante, LocalDate data, LocalTime ora,
-                        String nominativo, String telefono, String infoAggiuntive) {
+                        String nominativo, String telefono, String infoAggiuntive, String fasciaOraria, int numeroPersone ) {
         this.idPrenotazione = idPrenotazione;
         this.idCliente = idCliente;
         this.idRistorante = idRistorante;
@@ -28,6 +30,8 @@ public class Prenotazione implements Serializable {
         this.nominativo = nominativo;
         this.telefono = telefono;
         this.infoAggiuntive = infoAggiuntive;
+        this.fasciaOraria = fasciaOraria;
+        this.numeroPersone = numeroPersone;
     }
 
     public int getIdPrenotazione() {
@@ -92,5 +96,21 @@ public class Prenotazione implements Serializable {
 
     public void setInfoAggiuntive(String infoAggiuntive) {
         this.infoAggiuntive = infoAggiuntive;
+    }
+
+    public String getFasciaOraria() {
+        return fasciaOraria;
+    }
+
+    public void setFasciaOraria(String fasciaOraria) {
+        this.fasciaOraria = fasciaOraria;
+    }
+
+    public int getNumeroPersone() {
+        return numeroPersone;
+    }
+
+    public void setNumeroPersone(int numeroPersone) {
+        this.numeroPersone = numeroPersone;
     }
 }

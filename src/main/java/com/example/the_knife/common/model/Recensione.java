@@ -2,6 +2,7 @@ package com.example.the_knife.common.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Recensione implements Serializable {
     private static final long serialVersionUID = 1L;
