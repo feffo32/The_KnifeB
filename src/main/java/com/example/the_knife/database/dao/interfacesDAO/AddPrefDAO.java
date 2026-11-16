@@ -4,7 +4,7 @@ import com.example.the_knife.common.model.Ristorante;
 import java.util.List;
 
 public interface AddPrefDAO {
-    public void  addPrefe (Ristorante ristorante) ;
-    public void  removePrefe (Ristorante ristorante);
-    public List<Ristorante> prefUte () ;
+    public boolean  addPrefe (Ristorante ristorante, int IdUte) ;
+    public boolean  removePrefe (Ristorante ristorante, int IdUte) ;
+    public List<Ristorante> prefUte (int IdUte) ;
 }
