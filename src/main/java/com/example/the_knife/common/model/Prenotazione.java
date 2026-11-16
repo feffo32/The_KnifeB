@@ -1,6 +1,7 @@
 package com.example.the_knife.common.model;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -11,7 +12,7 @@ public class Prenotazione implements Serializable {
     private int idCliente;
     private int idRistorante;
     private LocalDate data;
-    private LocalTime ora;
+    private Time ora;
     private String nominativo;
     private String telefono;
     private String infoAggiuntive;
@@ -20,7 +21,7 @@ public class Prenotazione implements Serializable {
 
     public Prenotazione() {}
 
-    public Prenotazione(int idPrenotazione, int idCliente, int idRistorante, LocalDate data, LocalTime ora,
+    public Prenotazione(int idPrenotazione, int idCliente, int idRistorante, LocalDate data, Time ora,
                         String nominativo, String telefono, String infoAggiuntive, String fasciaOraria, int numeroPersone ) {
         this.idPrenotazione = idPrenotazione;
         this.idCliente = idCliente;
@@ -66,11 +67,11 @@ public class Prenotazione implements Serializable {
         this.idRistorante = idRistorante;
     }
 
-    public LocalTime getOra() {
+    public Time getOra() {
         return ora;
     }
 
-    public void setOra(LocalTime ora) {
+    public void setOra(Time ora) {
         this.ora = ora;
     }
 
