@@ -12,7 +12,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<StackPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.RecensioneRistoranteSearchController">
+<StackPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.ClientTK.RecensioneRistoranteSearchController">
     <BorderPane styleClass="root">
         <padding>
             <Insets top="20" right="15" bottom="20" left="15"/>

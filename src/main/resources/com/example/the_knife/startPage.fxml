@@ -5,7 +5,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.StartPageController">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.ClientTK.StartPageController">
     <BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="root">
 
         <!-- MENU IN ALTO A DESTRA -->

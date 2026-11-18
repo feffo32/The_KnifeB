@@ -43715,5 +43715,17 @@
     "Ruolo" : "Ristoratore",
     "Id" : 211,
     "Preferiti" : null
+  }, {
+    "Nome" : "ptete",
+    "Cognome" : "Pepo",
+    "Email" : "pepo@gmail.com",
+    "Indirizzo" : "via antonio,14",
+    "Username" : "pepo32",
+    "Password" : "$2a$10$qp4jcbfg0GuPJbj/dr1HmuuzryYhUJUi5yEkPFODm30U6autm/RqC",
+    "DataDiNascita" : [ 2026, 11, 16 ],
+    "Telefono" : "+391234567890",
+    "Ruolo" : "Ristoratore",
+    "Id" : 0,
+    "Preferiti" : [ 265, 1003 ]
   } ]
 }

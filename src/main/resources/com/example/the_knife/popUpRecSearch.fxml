@@ -5,7 +5,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<VBox styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.PopUpRecSearchController">
+<VBox styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.ClientTK.PopUpRecSearchController">
     <VBox styleClass="form-boxPop" spacing="20" alignment="CENTER" prefWidth="400" prefHeight="250">
         <stylesheets>
             <URL value="@style.css"/>

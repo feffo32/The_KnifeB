@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 
 <?import java.net.URL?>
-<StackPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.DettaglioRistoranteSearchController">
+<StackPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.ClientTK.DettaglioRistoranteSearchController">
     <BorderPane styleClass="root">
         <padding>
             <Insets top="20" right="15" bottom="20" left="15"/>

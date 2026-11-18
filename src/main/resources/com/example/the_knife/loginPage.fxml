@@ -7,7 +7,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<StackPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.LoginController">
+<StackPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.the_knife.ClientTK.LoginController">
     <stylesheets>
         <URL value="@style.css" />
     </stylesheets>

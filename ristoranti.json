@@ -30241,7 +30241,7 @@
       "risposta" : null
     } ],
     "NumRec" : 4,
-    "MediaRec" : 4.8,
+    "MediaRec" : 4.3,
     "Email" : "il_viaggio@example.com"
   }, {
     "Id" : 390,
@@ -85742,5 +85742,26 @@
     "NumRec" : 6,
     "MediaRec" : 3.5,
     "Email" : "moharaj@example.com"
+  }, {
+    "Id" : 1612,
+    "IdRistoratore" : 0,
+    "Name" : "Ristorante PEPO",
+    "Address" : "via antonio,13",
+    "Location" : "Domodossola, Italia",
+    "Price" : "$$",
+    "Cuisine" : "Messicana",
+    "Longitude" : 10.8146922,
+    "Latitude" : 45.7641966,
+    "PhoneNumber" : "+391234567890",
+    "WebsiteUrl" : "www.pepo.it",
+    "GreenStar" : 5,
+    "FacilitiesAndServices" : "scadadadasd",
+    "Description" : "sdasdadaddasdas",
+    "Delivery" : true,
+    "BookingOnline" : true,
+    "recensioni" : null,
+    "NumRec" : 0,
+    "MediaRec" : 0.0,
+    "Email" : "pepo@gmail.com"
   } ]
 }
