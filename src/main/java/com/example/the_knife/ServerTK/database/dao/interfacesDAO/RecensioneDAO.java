@@ -1,7 +1,7 @@
 package com.example.the_knife.ServerTK.database.dao.interfacesDAO;
 
-import com.example.the_knife.ClientTK.common.model.Recensione;
-import com.example.the_knife.ClientTK.common.model.Ristorante;
+import com.example.the_knife.ServerTK.common.model.Recensione;
+import com.example.the_knife.ServerTK.common.model.Ristorante;
 
 import java.util.List;
 
