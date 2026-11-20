@@ -8,9 +8,9 @@ import java.rmi.RemoteException;
 
 public interface ClienteInterface extends UtenteInterface {
 
-    public void aggiungiRecensione (Recensione newRecensione, Ristorante ristorante) throws RemoteException;
-    public void removeRecensione (Recensione recensione, Ristorante ristorante) throws RemoteException;
-    public void modificaRecensione (String testoRecensione, int valutazione) throws  RemoteException;
+    public void aggiungiRecensione (Recensione newRecensione) throws RemoteException;
+    public void removeRecensione (Recensione recensione) throws RemoteException;
+    public void modificaRecensione (Recensione recensione, String testoRecensione, int valutazione) throws  RemoteException;
     public boolean prenota (Prenotazione prenotazione) throws RemoteException;
     public boolean annullaPrenotazione (Prenotazione prenotazione) throws RemoteException;
     public boolean modificaPrenotazione (Prenotazione prenotazione, Prenotazione newPrenotazione) throws RemoteException;

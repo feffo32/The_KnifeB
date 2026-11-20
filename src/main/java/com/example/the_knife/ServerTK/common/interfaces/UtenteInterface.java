@@ -13,11 +13,11 @@ public interface UtenteInterface extends Remote {
 
     public void modificaUte (Utente utente) throws RemoteException, ModificaUteException;
     public boolean verificaPassword (String username, String password) throws RemoteException;
-    public void  addPrefe (Ristorante ristorante) throws RemoteException;
-    public void  removePrefe (Ristorante ristorante) throws RemoteException;
-    public List<Ristorante> cercaRistorante (String luogo, String name, String tipoCucina, String fasciaPrezzo, boolean delivery, boolean onlineService, boolean bookOnline) throws RemoteException;
+    public void  addPrefe (Ristorante ristorante, int IdUte) throws RemoteException;
+    public void  removePrefe (Ristorante ristorante, int IdUte) throws RemoteException;
+    public List<Ristorante> cercaRistorante (String luogo, String tipoCucina, String fasciaPrezzo, boolean delivery, boolean bookOnline) throws RemoteException;
     public List<Ristorante> cercaTop10 () throws RemoteException;
-    public List<Ristorante> prefUte () throws RemoteException;
+    public List<Ristorante> prefUte (int IdUte) throws RemoteException;
     public List<Recensione> visualizzaRecensioneByRistorante (Ristorante ristorante) throws RemoteException;
     public Utente riepilogoUtente (int idUtente) throws RemoteException;
 

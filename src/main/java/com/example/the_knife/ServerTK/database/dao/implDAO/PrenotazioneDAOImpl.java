@@ -1,6 +1,6 @@
 package com.example.the_knife.ServerTK.database.dao.implDAO;
 
-import com.example.the_knife.ClientTK.common.model.Prenotazione;
+import com.example.the_knife.ServerTK.common.model.Prenotazione;
 import com.example.the_knife.ServerTK.database.DBConnection;
 import com.example.the_knife.ServerTK.database.dao.interfacesDAO.PrenotazioneDAO;
 
