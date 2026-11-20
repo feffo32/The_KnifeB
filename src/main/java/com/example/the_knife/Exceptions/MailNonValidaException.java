@@ -1,4 +1,4 @@
-package com.example.the_knife.ClientTK.Exceptions;
+package com.example.the_knife.Exceptions;
 /**
  * Eccezione personalizzata che segnala un'email non valida inserita dall'utente.
  *

@@ -1,4 +1,4 @@
-package com.example.the_knife.ClientTK.Exceptions;
+package com.example.the_knife.Exceptions;
 /**
  * Eccezione personalizzata lanciata quando viene fornito un numero di telefono non valido
  * durante operazioni come registrazione, modifica del profilo o inserimento dati.

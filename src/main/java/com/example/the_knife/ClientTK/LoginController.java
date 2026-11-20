@@ -1,7 +1,7 @@
 
 package com.example.the_knife.ClientTK;
 
-import com.example.the_knife.ClientTK.Exceptions.*;
+import com.example.the_knife.Exceptions.*;
 import com.example.the_knife.ClientTK.Utente.ListaUtenti;
 import com.example.the_knife.ClientTK.Utente.SessionManager;
 import com.example.the_knife.ClientTK.Utente.Utente;

@@ -1,4 +1,4 @@
-package com.example.the_knife.ClientTK.Exceptions;
+package com.example.the_knife.Exceptions;
 /**
  * Eccezione personalizzata generica utilizzata per segnalare errori legati alle
  * operazioni sugli utenti nel sistema.

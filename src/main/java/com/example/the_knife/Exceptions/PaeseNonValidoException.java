@@ -1,4 +1,4 @@
-package com.example.the_knife.ClientTK.Exceptions;
+package com.example.the_knife.Exceptions;
 /**
  * Eccezione personalizzata che segnala l'inserimento di un paese non valido
  * durante la registrazione o modifica del profilo utente o ristorante.

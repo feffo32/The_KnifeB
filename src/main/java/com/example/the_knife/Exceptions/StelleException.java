@@ -1,4 +1,4 @@
-package com.example.the_knife.ClientTK.Exceptions;
+package com.example.the_knife.Exceptions;
 /**
  * Eccezione personalizzata lanciata quando il numero di stelle di un ristorante
  * inserito o modificato non è valido.

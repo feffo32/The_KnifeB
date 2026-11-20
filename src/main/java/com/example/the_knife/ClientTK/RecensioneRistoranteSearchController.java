@@ -1,7 +1,7 @@
 package com.example.the_knife.ClientTK;
 
-import com.example.the_knife.ClientTK.Exceptions.MaxNumRecensioniException;
-import com.example.the_knife.ClientTK.Exceptions.MioRistoException;
+import com.example.the_knife.Exceptions.MaxNumRecensioniException;
+import com.example.the_knife.Exceptions.MioRistoException;
 import com.example.the_knife.ClientTK.Ristoratore.*;
 import com.example.the_knife.ClientTK.Utente.SessionManager;
 import com.fasterxml.jackson.databind.JsonNode;

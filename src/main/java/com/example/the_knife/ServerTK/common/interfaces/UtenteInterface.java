@@ -1,5 +1,6 @@
 package com.example.the_knife.ServerTK.common.interfaces;
 
+import com.example.the_knife.Exceptions.ModificaUteException;
 import com.example.the_knife.ServerTK.common.model.Recensione;
 import com.example.the_knife.ServerTK.common.model.Ristorante;
 import com.example.the_knife.ServerTK.common.model.Utente;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface UtenteInterface extends Remote {
 
-    public void modificaUte (Utente utente) throws RemoteException;
+    public void modificaUte (Utente utente) throws RemoteException, ModificaUteException;
     public boolean verificaPassword (String username, String password) throws RemoteException;
     public void  addPrefe (Ristorante ristorante) throws RemoteException;
     public void  removePrefe (Ristorante ristorante) throws RemoteException;

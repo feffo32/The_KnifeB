@@ -1,4 +1,4 @@
-package com.example.the_knife.ClientTK.Exceptions;
+package com.example.the_knife.Exceptions;
 /**
  * Eccezione personalizzata che segnala il superamento del numero massimo di caratteri consentiti
  * in un campo di input (come nome, descrizione, indirizzo, ecc.).

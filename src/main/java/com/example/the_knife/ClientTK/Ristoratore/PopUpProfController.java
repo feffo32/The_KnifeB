@@ -1,6 +1,6 @@
 package com.example.the_knife.ClientTK.Ristoratore;
 
-import com.example.the_knife.ClientTK.Exceptions.VecchiaPasswordException;
+import com.example.the_knife.Exceptions.VecchiaPasswordException;
 import com.example.the_knife.ClientTK.InputValidator;
 import com.example.the_knife.ClientTK.Utente.SessionManager;
 import javafx.event.ActionEvent;

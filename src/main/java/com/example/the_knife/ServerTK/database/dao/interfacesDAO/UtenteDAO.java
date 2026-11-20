@@ -1,6 +1,6 @@
 package com.example.the_knife.ServerTK.database.dao.interfacesDAO;
 
-import com.example.the_knife.ClientTK.common.model.Utente;
+import com.example.the_knife.ServerTK.common.model.Utente;
 
 
 

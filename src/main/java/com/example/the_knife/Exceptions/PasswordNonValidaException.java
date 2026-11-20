@@ -1,4 +1,4 @@
-package com.example.the_knife.ClientTK.Exceptions;
+package com.example.the_knife.Exceptions;
 /**
  * Eccezione personalizzata lanciata quando la password inserita
  * non rispetta i criteri di validazione definiti dall'applicazione.

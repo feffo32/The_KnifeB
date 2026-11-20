@@ -1,4 +1,4 @@
-package com.example.the_knife.ClientTK.Exceptions;
+package com.example.the_knife.Exceptions;
 /**
  * Eccezione personalizzata che viene lanciata quando la vecchia password fornita
  * da un utente non corrisponde a quella attualmente registrata nel sistema.
